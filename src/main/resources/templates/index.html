@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Fairfield City Library System - Home</title>
+    <link rel="icon" href="/images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/cosmo/bootstrap.min.css" rel="stylesheet" integrity="sha384-uhut8PejFZO8994oEgm/ZfAv0mW1/b83nczZzSwElbeILxwkN491YQXsCFTE6+nx" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header th:replace="fragments/header :: header"></header>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+    <main>
+        <h1>Welcome to the City of Fairfield Library System</h1>
+        <hr/>
+        <div>
+            <img id="banner-img" th:src="@{/images/fairfield-city-conv-center-photo.jpg}" alt="Fairfield City Photo">
+        </div>
+        <div style="font-size: 1em">
+            We are a top-flight, fully-digitized library. Find out more <a href="/fairfieldlibrary/about">about us</a> and learn how we can serve you with a widest variety of books and lots of other digital content, all for your education as well as your entertainment. You can also take a virtual tour, of our world-class facilities and be amazed at all what we have in stock for you, your family and friends.
+            Select the appropriate menu item, located on the nav-bar above.<br/><br/>
+
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry. Lorem Ipsum has been the industry's standard dummy text
+            ever since the 1500s, when an unknown printer took a galley of type
+            and scrambled it to make a type specimen book. It has survived not
+            only five centuries, but also the leap into electronic typesetting,
+            remaining essentially unchanged. It was popularised in the 1960s with
+            the release of Letraset sheets containing Lorem Ipsum passages, and
+            more recently with desktop publishing software like Aldus PageMaker
+            including versions of Lorem Ipsum.
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae eos excepturi iste odio officia recusandae, repellendus. Amet earum error fugiat in laudantium libero nihil, pariatur reprehenderit rerum, similique tempora totam?
+            </p>
+            <p>
+                Lorem ipsum dolor sit amet.
+            </p>
+        </div>
+    </main>
+    <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>

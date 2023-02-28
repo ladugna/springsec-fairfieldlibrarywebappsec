@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Fairfield Library System - System Administration - Publishers</title>
+  <link rel="icon" href="/images/favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header th:replace="fragments/header :: header"></header>
+  <nav th:replace="fragments/navbar :: navbar"></nav>
+  <main>
+    <h1>System Administration</h1>
+    <nav>
+      <a href="/fairfieldlibrary/sysadmin/publisher/list">Manage Publishers</a> |
+      <a href="#">Manage Books</a> |
+      <a href="#">Manage Library Members</a>
+    </nav>
+    <h2>List of our Publishers</h2>
+    <section>
+      <table class="data-grid">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Publisher Name</th>
+            <th>Primary Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="publisher, counter : ${publishers}">
+            <th th:text="${counter.count}"></th>
+            <td th:text="${publisher.name}"></td>
+            <td th:if="${publisher.primaryAddress != null}">
+              <p>
+                <span th:text="${publisher.primaryAddress.street}"></span><br>
+                <span th:text="${publisher.primaryAddress.city}+', '+${publisher.primaryAddress.state} + ' ' + ${publisher.primaryAddress.zipCode}"></span>
+              </p>
+            </td>
+          </tr>
+          <tr th:if="${publishers.isEmpty()}">
+            <td colspan="3" style="text-align: center;">No Publisher data found.</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="pagination-nav">
+      <!-- Pagination -->
+      <table th:if="${!publishers.isEmpty()}" class="pages">
+        <tbody>
+          <tr>
+            <th scope="row">Pages:</th>
+            <td th:each="pageCount : ${#numbers.sequence(1, publishers.totalPages)}">
+              <a th:if="${currentPageNo == pageCount-1}" th:href="@{/fairfieldlibrary/secured/sysadmin/publisher/list(pageNo=${pageCount-1})}"
+                 th:text="${pageCount}" style="padding: 100%; background-color:aqua;"></a>
+              <a th:if="${currentPageNo != pageCount-1}" th:href="@{/fairfieldlibrary/secured/sysadmin/publisher/list(pageNo=${pageCount-1})}"
+                 th:text="${pageCount}"></a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  <footer th:replace="fragments/footer :: footer"></footer>
+</body>
+</html>
